@@ -1,25 +1,29 @@
 # @tencentyun/h5-panel-template
 
-[![Build Status][travis-img]][travis-url]
-[![Dependency Status][dependency-img]][dependency-url]
-[![devDependency Status][devdependency-img]][devdependency-url]
-[![Code Style][style-img]][style-url]
-
-> A template for creating h5-panel-template apps.
+> A template for creating 腾讯连连 h5-panel apps.
 
 ## Usage
 
-Prerequisites: [Node.js](https://nodejs.org) (>= 12.10 required, >= 14.17 preferred), [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22) and [Git](https://git-scm.com).
+如果您还不了解 h5 面板，可以查看[快速入门](https://cloud.tencent.com/document/product/1081/49026)及[开发指南](https://cloud.tencent.com/document/product/1081/49028)
+
+准备环境: [Node.js](https://nodejs.org) (>= 12.10 required, >= 14.17 preferred), [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22) [whistle](https://github.com/avwo/whistle) and [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega).
+
+在 whistle 中配置如下：
+```shell
+developing.script/developing.js https://127.0.0.1:9000/index.js
+developing.style/developing.css https://127.0.0.1:9000/index.css
+```
+
+开始初始化面板项目
 
 ```shell
 # create h5-panel-template apps by this template
-$ npx caz h5-panel-template my-h5-panel-template
+$ npx caz tencentyun/h5-panel-template my-h5-panel
 
 # enter generated directory
-$ cd my-h5-panel-template
+$ cd my-h5-panel
 
-# running test if you choose test features
-$ npm test # or `yarn test`
+$ npm run dev # 会自动打开面板页面
 ```
 
 Or use globally installed CAZ:
@@ -31,12 +35,12 @@ $ npm install caz --global # or `yarn global add caz`
 # create h5-panel-template apps by this template
 $ caz h5-panel-template my-h5-panel-template
 
-# enter generated directory
-$ cd my-h5-panel-template
-
-# running test if you choose test features
-$ npm test # or `yarn test`
 ```
+
+### 常见问题
+
+Q: 打开的页面白屏
+A: 请检查 whistl配置是否正常
 
 ## Related
 
@@ -55,7 +59,7 @@ $ npm test # or `yarn test`
 
 ## License
 
-[MIT](LICENSE) &copy; [shuaisguo](https://github.com/imgss)
+[MIT](LICENSE)
 
 
 
