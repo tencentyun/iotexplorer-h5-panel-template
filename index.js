@@ -6,12 +6,13 @@ module.paths = require.main.paths
 const path = require('path')
 const chalk = require('chalk')
 const { name, version } = require('./package.json')
+const IOT_PANEL_COMPONENT = 'iot-panel-component';
 
 /** @type {import('caz').Template} */
 module.exports = {
   name,
   version,
-  source: 'h5panel-template',
+  source: 'template/js',
   prompts: [
     // TODO: custom template prompts
     {
@@ -31,34 +32,12 @@ module.exports = {
       initial: 'Awesome h5-panel-template apps.'
     },
     {
-      name: 'author',
-      type: 'text',
-      message: 'Project author name'
-    },
-    {
-      name: 'email',
-      type: 'text',
-      message: 'Project author email'
-    },
-    {
-      name: 'url',
-      type: 'text',
-      message: 'Project author url'
-    },
-    {
-      name: 'github',
-      type: 'text',
-      message: 'GitHub username or organization',
-      initial: 'zce'
-    },
-    {
       name: 'features',
       type: 'multiselect',
       message: 'Choose the features you need',
       instructions: false,
       choices: [
-        { title: 'Automatic test', value: 'test', selected: true },
-        { title: 'Foo', value: 'foo' }
+        { title: '安装官方面板组件库', value: IOT_PANEL_COMPONENT, selected: true },
       ]
     },
     {
@@ -79,10 +58,21 @@ module.exports = {
       ]
     }
   ],
+  prepare: async ctx => {
+    // Execute install according to user's choice.
+    ctx.config.install = ctx.answers.install && ctx.answers.pm
+
+    if (ctx.answers.features.includes(IOT_PANEL_COMPONENT)) {
+      const packageJson = ctx.files.find(file => file.path === 'package.json');
+      const content = JSON.parse(packageJson.contents.toString());
+      content.dependencies['qcloud-iot-panel-component'] = '^0.0.32';
+      packageJson.contents = Buffer.from(JSON.stringify(content, null, 2));
+    }
+  },
   complete: async ctx => {
     // TODO: custom complete callback
     console.clear()
-    console.log(chalk`Created a new project in {cyan ${ctx.project}} by the {blue ${ctx.template}} template.\n`)
+    console.log(chalk`Created a new panel project in {cyan ${ctx.project}} by the {blue ${ctx.template}} template.\n`)
     console.log('Getting Started:')
     if (ctx.dest !== process.cwd()) {
       console.log(chalk`  $ {cyan cd ${path.relative(process.cwd(), ctx.dest)}}`)
@@ -90,7 +80,7 @@ module.exports = {
     if (ctx.config.install === false) {
       console.log(chalk`  $ {cyan npm install} {gray # or yarn}`)
     }
-    console.log(chalk`  $ {cyan ${ctx.config.install ? ctx.config.install : 'npm'} test}`)
+    console.log(chalk`  $ {cyan ${ctx.config.install ? ctx.config.install : 'npm'} dev}`)
     console.log('\nHappy hacking :)\n')
   }
 }
