@@ -27,7 +27,8 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack/webpack.config.js --env.mode=development --watch",
-    "release": "webpack --config webpack/webpack.config.js --env.mode=production",
+    "build": "webpack --config webpack/webpack.config.js --env.mode=production",
+    "release": "npm run build",
     "dev:p": "npm run dev -- --productId=8A26S0J1QB"
   },
   "eslintConfig": {
@@ -54,10 +55,16 @@
     "@babel/preset-typescript": "^7.10.4",
     "@babel/runtime": "^7.12.1",
     "autoprefixer": "^9.7.4",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^1.0.0",
