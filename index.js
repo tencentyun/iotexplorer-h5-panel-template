@@ -29,7 +29,7 @@ module.exports = {
       name: 'description',
       type: 'text',
       message: 'Project description',
-      initial: 'Awesome h5-panel-template apps.'
+      initial: 'Awesome h5-panel apps.'
     },
     {
       name: 'features',
@@ -80,7 +80,7 @@ module.exports = {
     if (ctx.config.install === false) {
       console.log(chalk`  $ {cyan npm install} {gray # or yarn}`)
     }
-    console.log(chalk`  $ {cyan ${ctx.config.install ? ctx.config.install : 'npm'} dev}`)
+    console.log(chalk`  $ {cyan ${ctx.config.install ? ctx.config.install : 'npm'} run dev -- --productId={magenta your_product_id} --deviceName={magenta your_devicename}} {gray # deviceName 参数可选}`)
     console.log('\nHappy hacking :)\n')
   }
 }
