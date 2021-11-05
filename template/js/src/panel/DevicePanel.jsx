@@ -11,7 +11,7 @@ console.log('h5 sdk', sdk);
 export default function DevicePanel() {
   return (
     <div className="panel">
-      <h3>DevicePanel Demo</h3>
+      <h2>DevicePanel Demo</h2>
       <SDK />
     </div>
   );

@@ -45,6 +45,7 @@ module.exports = (env, argv) => {
       contentBase: distPath,
       compress: true,
       port: 9000,
+      host: '0.0.0.0',
       disableHostCheck: true, //  新增该配置项
       // hot: true,
       open: true,

@@ -76,7 +76,9 @@ export default function API() {
       <h3>界面交互</h3>
       <button onClick={showTip}>显示tip</button>
       <button onClick={() => sdk.showOfflineTip()}>显示离线提示</button>
+      <h3>跳转小程序页面</h3>
       <button onClick={() => sdk.goFeedBackPage()}>去反馈页面</button>
+      <button onClick={() => sdk.navBack()}>返回上级页面</button>
     </div>
   )
 }
