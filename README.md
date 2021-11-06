@@ -1,4 +1,4 @@
-# @tencentyun/h5-panel-template
+# @tencentyun/iotexplorer-h5-panel-template
 
 > 一个创建腾讯连连 h5 开发面板的 CAZ template.
 
@@ -19,10 +19,10 @@ https://iot.cloud.tencent.com:9000 https://127.0.0.1:9000 # 用于支持HMR
 
 ```shell
 # create h5-panel apps by this template
-$ npx caz tencentyun/h5-panel-template my-h5-panel
+$ npx caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
 
 # 如果全局安装了 caz
-$ caz tencentyun/h5-panel-template my-h5-panel
+$ caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
 
 $ cd my-h5-panel
 

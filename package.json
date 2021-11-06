@@ -1,15 +1,15 @@
 {
-  "name": "@tencentyun/h5-panel-template",
+  "name": "@tencentyun/ioteplorer-h5-panel-template",
   "version": "0.1.0",
   "private": true,
-  "description": "A template for creating h5-panel-template apps.",
+  "description": "A template for creating iotexplorerh h5-panel apps.",
   "keywords": [
     "h5-panel-template",
     "tencentyun",
     "caz",
     "zce"
   ],
-  "repository": "tencentyun/h5-panel-template",
+  "repository": "tencentyun/ioteplorer-h5-panel-template",
   "license": "MIT",
   "author": "shuaisguo <shuaisguo@tencent.com> (https://github.com/imgss)",
   "main": "index.js",
