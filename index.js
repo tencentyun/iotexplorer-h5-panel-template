@@ -32,12 +32,22 @@ module.exports = {
       initial: 'Awesome h5-panel apps.'
     },
     {
+      name: 'framework',
+      type: prev => process.env.NODE_ENV === 'test' || prev ? 'select' : null,
+      message: '请选一个框架',
+      hint: ' ',
+      choices: [
+        { title: 'react-js', value: 'react-js' },
+        { title: 'vue 3', value: 'vue 3' },
+      ]
+    },
+    {
       name: 'features',
       type: 'multiselect',
       message: 'Choose the features you need',
       instructions: false,
       choices: [
-        { title: '安装官方面板组件库', value: IOT_PANEL_COMPONENT, selected: true },
+        { title: '安装标准面板组件库[react]', value: IOT_PANEL_COMPONENT, selected: false },
       ]
     },
     {
@@ -58,6 +68,15 @@ module.exports = {
       ]
     }
   ],
+  setup: ctx => {
+    switch (ctx.answers.framework) {
+      case 'vue 3':
+        ctx.config.source = 'template/vue3';
+        break;
+      default:
+        ctx.config.source = 'template/js';
+    }
+  },
   prepare: async ctx => {
     // Execute install according to user's choice.
     ctx.config.install = ctx.answers.install && ctx.answers.pm

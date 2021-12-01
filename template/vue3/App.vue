@@ -1,8 +1,12 @@
 <template>
 <div class="panel">
   <h1>Vue h5 面板</h1>
-  <div>Hello {{ name }}!</div>
-  <button @click="showTip">显示状态</button>
+  <ul>
+    <li>设备名称: {{ deviceName }}</li>
+    <li>产品ID: {{ productId }}</li>
+  </ul>
+
+  <button @click="showTip">显示设备状态</button>
   <div>
     <h2>vue-router demo</h2>
     <div style="display:flex; gap: 10px">
@@ -17,16 +21,20 @@
 </template>
 
 <script>
-  imp
+  const sdk = window.h5PanelSdk;
   export default {
     data() {
       return {
-        name: "panel",
+        deviceName: sdk.deviceName,
+        productId: sdk.productId,
       };
     },
     methods: {
       showTip() {
-        window.h5PanelSdk.tips.alert('设备已离线');
+        sdk.getDeviceStatus().then(res => {
+          console.log('res', res);
+          sdk.tips.alert('设备已离线');
+        })
       }
     }
   };
