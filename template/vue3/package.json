@@ -4,8 +4,8 @@
   "description": "<%= description %>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx parcel index.js -p 9000 --https",
-    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build index.js"
+    "dev": "npx parcel src/index.js -p 9000 --https",
+    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js"
   },
   "alias": {
     "qcloud-iotexplorer-h5-panel-sdk": {
