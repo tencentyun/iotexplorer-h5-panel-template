@@ -7,9 +7,15 @@
     "dev": "npx parcel index.js -p 9000 --https",
     "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build index.js"
   },
+  "alias": {
+    "qcloud-iotexplorer-h5-panel-sdk": {
+      "global": "h5PanelSdk"
+    }
+  },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "qcloud-iotexplorer-h5-panel-sdk": "^1.2.8",
     "vue": "^3.2.21",
     "vue-router": "4"
   },

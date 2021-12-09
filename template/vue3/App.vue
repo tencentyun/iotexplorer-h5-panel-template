@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  const sdk = window.h5PanelSdk;
+  import sdk from 'qcloud-iotexplorer-h5-panel-sdk';
   export default {
     data() {
       return {

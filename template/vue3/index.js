@@ -1,8 +1,7 @@
-import { createApp } from "vue";
+import { createApp } from 'vue';
+import sdk from 'qcloud-iotexplorer-h5-panel-sdk';
 import router from './router';
 import App from './App.vue';
-
-const sdk = window.h5PanelSdk;
 
 console.log('sdk', sdk);
 
