@@ -183,8 +183,7 @@ export default {
           );
 
           sdk.insightReportor.error(sdk.REPORT_EVENT_TYPE, {
-            message:
-              ERROR_MESSAGES[err.code] || ERROR_MESSAGES.CONNECT_DEVICE_ERROR,
+            message: '连接设备出错',
             error: err,
             data: {
               error: err,
