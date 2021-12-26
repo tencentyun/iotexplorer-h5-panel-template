@@ -4,7 +4,7 @@
   "description": "<%= description %>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx parcel src/index.js -p 9000 --https",
+    "dev": "node script/dev.mjs",
     "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js"
   },
   "alias": {
