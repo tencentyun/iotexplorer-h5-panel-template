@@ -9,8 +9,10 @@ const params = process.argv.slice(2)
     return config;
   }, {});
 
-if (!params.productId || !params.deviceName) {
-  console.warn('请提供productId 和 deviceName 打开面板开发页面');
+const { productId, deviceName } = params;
+
+if (!productId) {
+  console.warn('请提供 productId 以打开面板开发页面');
 }
 
 let bundler = new Parcel({
@@ -39,4 +41,4 @@ let subscription = await bundler.watch((err, event) => {
   }
 });
 
-open(`https://iot.cloud.tencent.com/h5panel/developing?productId=${params.productId || ''}&deviceName=${params.deviceName || ''}`);
+open(`https://iot.cloud.tencent.com/h5panel/developing?productId=${productId || ''}${deviceName ? `&deviceName=${deviceName}` : ''}`);
