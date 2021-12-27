@@ -4,16 +4,26 @@
   "description": "<%= description %>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx parcel index.js -p 9000 --https",
-    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build index.js"
+    "dev": "node script/dev.mjs",
+    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js"
+  },
+  "alias": {
+    "qcloud-iotexplorer-h5-panel-sdk": {
+      "global": "h5PanelSdk"
+    }
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "qcloud-iotexplorer-bluetooth-adapter-llsync": "^1.7.5-beta",
+    "qcloud-iotexplorer-h5-panel-sdk": "^1.2.8",
+    "vant": "3",
+    "vconsole": "^3.9.5",
     "vue": "^3.2.21",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@parcel/transformer-less": "^2.0.1",
     "@parcel/transformer-vue": "^2.0.0",
     "parcel": "2.0.1"
   }

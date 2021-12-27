@@ -2,8 +2,12 @@
 
 ### whistle 配置
 
+```
 developing.script/developing.js http://127.0.0.1:9000/index.js
 developing.style/developing.css http://127.0.0.1:9000/index.css
+wss://iot.cloud.tencent.com/ wss://localhost:9000/
+```
+
 
 ### dev
 ```bash

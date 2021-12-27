@@ -17,7 +17,7 @@ https://iot.cloud.tencent.com:9000 https://127.0.0.1:9000 # 用于支持HMR
 
 开始初始化面板项目
 
-```shell
+```bash
 # create h5-panel apps by this template
 $ npx caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
 
