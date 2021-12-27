@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
+    "qcloud-iotexplorer-h5-panel-sdk": "^1.2.8",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.11",
     "@types/react": "^16.9.11",
