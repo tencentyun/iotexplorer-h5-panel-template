@@ -4,7 +4,7 @@
   "description": "<%= description %>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node script/dev.mjs",
+    "dev": "node scripts/dev.mjs",
     "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js"
   },
   "alias": {
@@ -23,8 +23,10 @@
     "vue-router": "4"
   },
   "devDependencies": {
+    "@parcel/config-default": "^2.0.1",
     "@parcel/transformer-less": "^2.0.1",
-    "@parcel/transformer-vue": "^2.0.0",
-    "parcel": "2.0.1"
+    "@parcel/transformer-vue": "^2.0.1",
+    "@parcel/core": "^2.0.1",
+    "parcel": "^2.0.1"
   }
 }
