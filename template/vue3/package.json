@@ -10,7 +10,8 @@
   "alias": {
     "qcloud-iotexplorer-h5-panel-sdk": {
       "global": "h5PanelSdk"
-    }
+    },
+    "process": false
   },
   "author": "",
   "license": "MIT",
@@ -27,6 +28,8 @@
     "@parcel/transformer-less": "^2.0.1",
     "@parcel/transformer-vue": "^2.0.1",
     "@parcel/core": "^2.0.1",
+    "buffer": "^6.0.3",
+    "open": "^8.4.0",
     "parcel": "^2.0.1"
   }
 }
