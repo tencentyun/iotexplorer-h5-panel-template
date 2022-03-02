@@ -18,6 +18,7 @@ if (!productId) {
 let bundler = new Parcel({
   entries: './src/index.js',
   defaultConfig: '@parcel/config-default',
+  shouldAutoInstall: true,
   serveOptions: {
     port: 9000,
     https: true,
