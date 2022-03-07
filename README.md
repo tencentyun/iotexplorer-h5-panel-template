@@ -16,7 +16,9 @@
 所需工具和实现原理：
 [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega).
 
-添加proxy ,将在浏览器中的访问的请求通过该插件代理到  `127.0.0.1:8899` ，再通过 whistle 将请求代理到本地服务。
+通过添加 `proxy SwitchyOmega`, 将在浏览器中的访问的请求通过该插件代理到 `http://127.0.0.1:8899`(whistle所在的 node 服务) ，再通过 whistle 将请求代理到本地开发服务器(http://localhost:9000)。
+
+![代理原理](./static/proxy.png)
 
 [whistle](https://github.com/avwo/whistle)使用
 
