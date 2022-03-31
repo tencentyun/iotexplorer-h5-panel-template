@@ -1,8 +1,5 @@
 // @ts-check
 
-// !!! Sharing the dependencies of caz
-module.paths = require.main.paths
-
 const path = require('path')
 const chalk = require('chalk')
 const { name, version } = require('./package.json')
