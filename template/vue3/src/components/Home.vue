@@ -5,6 +5,7 @@
     </div>
     <div style="display: flex; justify-content: space-around;">
       <!-- <van-button type="primary" @click="showTip" size="small">显示设备状态</van-button> -->
+      <img :src="logo" />
       <van-button
         type="primary"
         size="small"
