@@ -3,9 +3,9 @@
     <div>
       <h2>vue panel demo</h2>
       <img :src="logo" className="logo">
-      <van-tabs v-model:active="active">
-        <van-tab title="home"></van-tab>
-        <van-tab title="about"></van-tab>
+      <van-tabs v-model:active="active" style="margin-bottom: 20px">
+        <van-tab title="home" name="/"></van-tab>
+        <van-tab title="about" name="/about"></van-tab>
       </van-tabs>
 
       <router-view></router-view>
@@ -23,14 +23,12 @@ export default {
   setup(){
     const route = useRoute();
     const router = useRouter();
-    const active = ref(0);
-
+    const active = ref('/');
+    router.isReady().then(() => {
+      active.value = route.path;
+    });
     watch(active, (active) => {
-      if (active === 0) {
-        router.push('/');
-      } else {
-        router.push('/about');
-      }
+      router.push(active);
     })
     return { logo, path: route.path, active, router }
   }
