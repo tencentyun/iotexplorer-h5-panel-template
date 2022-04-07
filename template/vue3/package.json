@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node scripts/dev.mjs",
-    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js"
+    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js",
+    "release": "npm run build"
   },
   "alias": {
     "qcloud-iotexplorer-h5-panel-sdk": {
