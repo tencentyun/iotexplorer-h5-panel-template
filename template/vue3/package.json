@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node scripts/dev.mjs",
-    "build": "rm -rf ./.parcel-cache && rm -rf ./dist && npx parcel build src/index.js",
+    "build": "rimraf ./.parcel-cache && rimraf ./dist && npx parcel build src/index.js",
     "release": "npm run build"
+  },
+  "engines": {
+    "node": ">=14"
   },
   "alias": {
     "qcloud-iotexplorer-h5-panel-sdk": {
@@ -20,7 +23,7 @@
     "qcloud-iotexplorer-bluetooth-adapter-llsync": "^1.7.5-beta",
     "qcloud-iotexplorer-h5-panel-sdk": "^1.2.8",
     "vant": "3",
-    "vconsole": "^3.9.5",
+    "rimraf": "^3.0.2",
     "vue": "^3.2.21",
     "vue-router": "4"
   },

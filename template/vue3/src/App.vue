@@ -29,8 +29,8 @@ export default {
     });
     watch(active, (active) => {
       router.push(active);
-    })
-    return { logo, path: route.path, active, router }
+    });
+    return { logo, path: route.path, active, router };
   }
 }
 </script>

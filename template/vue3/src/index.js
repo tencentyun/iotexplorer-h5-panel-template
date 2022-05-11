@@ -1,4 +1,3 @@
-import VConsole from 'vconsole';
 import { createApp } from 'vue';
 import { Button, Cell, Icon, Tab, Tabs } from 'vant';
 import sdk from 'qcloud-iotexplorer-h5-panel-sdk';
@@ -10,8 +9,6 @@ import 'vant/lib/index.css';
 
 StandardDeviceAdapter.injectOptions({ appDevSdk: sdk.appDevSdk });
 sdk.blueToothAdapter.addAdapter(StandardDeviceAdapter, true);
-
-const vConsole = new VConsole();
 
 const app = createApp(App);
 [router, Button, Cell, Icon, Tab, Tabs].forEach(plugin => app.use(plugin));
