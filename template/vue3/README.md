@@ -5,6 +5,7 @@
 ```
 developing.script/developing.js http://127.0.0.1:9000/index.js
 developing.style/developing.css http://127.0.0.1:9000/index.css
+/developing.script\/(.+)\.js/ https://127.0.0.1:9000/$1.js # 如果使用了分包，需要配置这一条
 $wss://iot.cloud.tencent.com/ wss://localhost:9000/ # 代理 HMR
 ```
 
@@ -58,9 +59,13 @@ import logo from 'data-url:./assets/logo.svg';
 
 ```js
 // router.js
+import Home from './components/Home.vue';
+
+// 将 /about 路由进行懒加载
+const About = () => import('./components/About.vue');
 const routes = [
   { path: '/', component: Home },
-  { path: '/about', component: import('./components/About.vue') }, // 异步路由加载
+  { path: '/about', component: About },
 ]
 ```
 

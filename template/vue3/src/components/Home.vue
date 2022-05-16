@@ -9,7 +9,7 @@
       <van-button
         type="primary"
         size="small"
-        @click="!isConnected ? connectDevice() : disConnectDevice()"
+        @click="!isConnected ? connectDevice() : disconnectDevice()"
         :loading="connectStatus === 'connecting'"
         loading-text="连接中"
       >
@@ -145,6 +145,11 @@ export default {
                   "color:green",
                   deviceAdapter
                 );
+              } else {
+                console.warn('没有搜到设备，请重试', device);
+                this.connectStatus = StandardBleConnectStatus.DISCONNECTED;
+                sdk.tips.showError('没有搜到设备，请重试');
+                return;
               }
             } catch(err) {
               console.error('搜索出错', err.message);
@@ -193,9 +198,9 @@ export default {
         }
       }
     },
-    disConnectDevice() {
+    disconnectDevice() {
       console.warn('disconnect Device');
-      this.deviceAdapterRef.disConnectDevice();
+      this.deviceAdapterRef.disconnectDevice();
     }
   },
 };

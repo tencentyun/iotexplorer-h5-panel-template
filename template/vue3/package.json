@@ -34,6 +34,19 @@
     "@parcel/core": "^2.0.1",
     "buffer": "^6.0.3",
     "open": "^8.4.0",
-    "parcel": "^2.0.1"
+    "parcel": "^2.0.1",
+    "parcel-namer-rewrite": "^2.0.0-rc.2"
+  },
+  "parcel-namer-rewrite": {
+    "rules": {
+      "(index).css": "index.{hash}.css",
+      "(index).js": "index.{hash}.js"
+    },
+    "developmentDisable" : true
+  },
+  "targets": {
+    "default": {
+      "context": "browser"
+    }
   }
 }
