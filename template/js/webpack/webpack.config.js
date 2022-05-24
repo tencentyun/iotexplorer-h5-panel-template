@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
     },
     output: {
       path: distPath,
-      filename: '[name].js',
+      filename: isDevMode ? '[name].js' : '[name].[contenthash:8].js',
       libraryTarget: 'umd'
     },
     externals: {
@@ -120,12 +120,12 @@ module.exports = (env, argv) => {
     plugins: [
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
+      ...(isDevMode ? [new webpack.HotModuleReplacementPlugin()] : []),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       new ModifiedMiniCssExtractPlugin({
-        filename: '[name].css',
+        filename: isDevMode ? '[name].css' : '[name].[contenthash:8].css',
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
