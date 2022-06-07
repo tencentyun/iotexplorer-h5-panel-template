@@ -1,6 +1,7 @@
 // node 版本需大于14.8.0
 import open from 'open';
 import {Parcel} from '@parcel/core';
+import chalk from 'chalk';
 
 const params = process.argv.slice(2)
   .reduce((config, param) => {
@@ -12,7 +13,10 @@ const params = process.argv.slice(2)
 const { productId, deviceName } = params;
 
 if (!productId) {
-  console.warn('请提供 productId 以打开面板开发页面');
+  console.warn(`${chalk.yellow('请提供 productId 以打开面板开发页面')}，
+命令： ${chalk.blue('npm run dev -- --productId=your_productId --deviceName=your_deviceName')}
+`);
+  // process.exit(0);
 }
 
 let bundler = new Parcel({
@@ -21,7 +25,7 @@ let bundler = new Parcel({
   shouldAutoInstall: true,
   serveOptions: {
     port: 9000,
-    https: true,
+    https: false,
   },
   hmrOptions: {
     port: 9000

@@ -30,6 +30,8 @@
 
 <script>
 import sdk from "qcloud-iotexplorer-h5-panel-sdk";
+import { useDeviceData } from "../hooks/useDeviceData";
+import { watchEffect } from "vue";
 
 const StandardBleConnectStatus = {
   DISCONNECTED: "disconnected",
@@ -45,6 +47,21 @@ const StandardBleConnectStatusStr = {
 };
 
 export default {
+  setup() {
+    const {deviceData, deviceStatus} = useDeviceData();
+    watchEffect(() => {
+      if (deviceStatus.value === 0) {
+        sdk.showOfflineTip();
+      } else {
+        sdk.hideOfflineTip();
+      }
+    });
+
+    return {
+      deviceData,
+      deviceStatus
+    }
+  },
   data() {
     return {
       connectStatus: "",
