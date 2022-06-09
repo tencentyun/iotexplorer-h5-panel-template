@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node scripts/dev.mjs",
+    "lint": "eslint --ext .js,.vue src",
     "build": "rimraf ./.parcel-cache && rimraf ./dist && npx parcel build src/index.js",
     "release": "npm run build"
   },
@@ -36,6 +37,8 @@
     "@parcel/transformer-vue": "^2.0.1",
     "buffer": "^6.0.3",
     "chalk": "^5.0.1",
+    "eslint": "^8.17.0",
+    "eslint-plugin-vue": "^9.1.0",
     "open": "^8.4.0",
     "parcel": "^2.0.1",
     "parcel-namer-rewrite": "^2.0.0-rc.2"
