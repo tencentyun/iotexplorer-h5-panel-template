@@ -2,13 +2,25 @@
   <div class="panel">
     <div>
       <h2>vue panel demo</h2>
-      <img :src="logo" className="logo">
-      <van-tabs v-model:active="active" style="margin-bottom: 20px">
-        <van-tab title="home" name="/"></van-tab>
-        <van-tab title="about" name="/about"></van-tab>
+      <img
+        :src="logo"
+        className="logo"
+      >
+      <van-tabs
+        v-model:active="active"
+        style="margin-bottom: 20px"
+      >
+        <van-tab
+          title="home"
+          name="/"
+        />
+        <van-tab
+          title="about"
+          name="/about"
+        />
       </van-tabs>
 
-      <router-view></router-view>
+      <router-view />
     </div>
   </div>
 </template>

@@ -1,17 +1,22 @@
 <template>
   <div>
     <div class="more-menu">
-      <van-icon name="more-o" @click="goDeviceDetail">跳转设备详情</van-icon>
+      <van-icon
+        name="more-o"
+        @click="goDeviceDetail"
+      >
+        跳转设备详情
+      </van-icon>
     </div>
     <div style="display: flex; justify-content: space-around;">
       <!-- <van-button type="primary" @click="showTip" size="small">显示设备状态</van-button> -->
-      <img :src="logo" />
+      <img :src="logo">
       <van-button
         type="primary"
         size="small"
-        @click="!isConnected ? connectDevice() : disconnectDevice()"
         :loading="connectStatus === 'connecting'"
         loading-text="连接中"
+        @click="!isConnected ? connectDevice() : disconnectDevice()"
       >
         {{ !isConnected ? '连接设备' : '断开连接' }}
       </van-button>
@@ -19,8 +24,9 @@
         type="danger"
         size="small"
         :disabled="!isConnected"
-        @click="controlDevice({lock_switch: Number(!deviceData.lockSwitch)})">
-          控制设备:{{deviceData.lockSwitch ? '关' : '开'}}
+        @click="controlDevice({lock_switch: Number(!deviceData.lockSwitch)})"
+      >
+        控制设备:{{ deviceData.lockSwitch ? '关' : '开' }}
       </van-button>
     </div>
 
@@ -30,6 +36,8 @@
 
 <script>
 import sdk from "qcloud-iotexplorer-h5-panel-sdk";
+import { useDeviceData } from "../hooks/useDeviceData";
+import { watchEffect } from "vue";
 
 const StandardBleConnectStatus = {
   DISCONNECTED: "disconnected",
@@ -45,13 +53,25 @@ const StandardBleConnectStatusStr = {
 };
 
 export default {
+  setup() {
+    const {deviceData, deviceStatus} = useDeviceData();
+    watchEffect(() => {
+      if (deviceStatus.value === 0) {
+        sdk.showOfflineTip();
+      } else {
+        sdk.hideOfflineTip();
+      }
+    });
+
+    return {
+      deviceData,
+      deviceStatus
+    }
+  },
   data() {
     return {
       connectStatus: "",
-      bleStatus: "",
-      deviceData: {
-        lockSwitch: sdk.deviceData.lock_switch
-      }
+      bleStatus: ""
     };
   },
   computed: {

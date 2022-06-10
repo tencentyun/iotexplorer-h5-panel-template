@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node scripts/dev.mjs",
+    "lint": "eslint --ext .js,.vue src",
     "build": "rimraf ./.parcel-cache && rimraf ./dist && npx parcel build src/index.js",
     "release": "npm run build"
   },
@@ -22,17 +23,22 @@
   "dependencies": {
     "qcloud-iotexplorer-bluetooth-adapter-llsync": "^1.7.5-beta",
     "qcloud-iotexplorer-h5-panel-sdk": "^1.2.8",
-    "vant": "3",
     "rimraf": "^3.0.2",
+    "vant": "3",
     "vue": "^3.2.21",
     "vue-router": "4"
   },
   "devDependencies": {
     "@parcel/config-default": "^2.0.1",
+    "@parcel/core": "^2.0.1",
+    "@parcel/optimizer-data-url": "2.6.0",
+    "@parcel/transformer-inline-string": "2.6.0",
     "@parcel/transformer-less": "^2.0.1",
     "@parcel/transformer-vue": "^2.0.1",
-    "@parcel/core": "^2.0.1",
     "buffer": "^6.0.3",
+    "chalk": "^5.0.1",
+    "eslint": "^8.17.0",
+    "eslint-plugin-vue": "^9.1.0",
     "open": "^8.4.0",
     "parcel": "^2.0.1",
     "parcel-namer-rewrite": "^2.0.0-rc.2"
@@ -42,7 +48,7 @@
       "(index).css": "index.{hash}.css",
       "(index).js": "index.{hash}.js"
     },
-    "developmentDisable" : true
+    "developmentDisable": true
   },
   "targets": {
     "default": {
