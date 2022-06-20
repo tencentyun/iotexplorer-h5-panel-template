@@ -25,26 +25,22 @@
   </div>
 </template>
 
-<script>
-// 小图可以用这种方式生成data-url，大图请上传服务器后使用url
-import logo from 'data-url:./assets/logo.svg';
-import { ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+<script setup>
+  // 小图可以用这种方式生成data-url，大图请上传服务器后使用url
+  import logo from 'data-url:./assets/logo.svg';
+  import { ref, watch } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
 
-export default {
-  setup(){
-    const route = useRoute();
-    const router = useRouter();
-    const active = ref('/');
-    router.isReady().then(() => {
-      active.value = route.path;
-    });
-    watch(active, (active) => {
-      router.push(active);
-    });
-    return { logo, path: route.path, active, router };
-  }
-}
+  const route = useRoute();
+  const router = useRouter();
+  const active = ref('/');
+  const { path } = route;
+  router.isReady().then(() => {
+    active.value = path;
+  });
+  watch(active, (active) => {
+    router.push(active);
+  });
 </script>
 
 <style lang="less">
