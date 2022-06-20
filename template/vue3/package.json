@@ -29,18 +29,18 @@
     "vue-router": "4"
   },
   "devDependencies": {
-    "@parcel/config-default": "^2.0.1",
-    "@parcel/core": "^2.0.1",
-    "@parcel/optimizer-data-url": "2.6.0",
-    "@parcel/transformer-inline-string": "2.6.0",
-    "@parcel/transformer-less": "^2.0.1",
-    "@parcel/transformer-vue": "^2.0.1",
+    "@parcel/config-default": "^2.6.0",
+    "@parcel/core": "^2.6.0",
+    "@parcel/optimizer-data-url": "^2.6.0",
+    "@parcel/transformer-inline-string": "^2.6.0",
+    "@parcel/transformer-less": "^2.6.0",
+    "@parcel/transformer-vue": "^2.6.0",
     "buffer": "^6.0.3",
     "chalk": "^5.0.1",
     "eslint": "^8.17.0",
     "eslint-plugin-vue": "^9.1.0",
     "open": "^8.4.0",
-    "parcel": "^2.0.1",
+    "parcel": "^2.6.0",
     "parcel-namer-rewrite": "^2.0.0-rc.2"
   },
   "parcel-namer-rewrite": {
