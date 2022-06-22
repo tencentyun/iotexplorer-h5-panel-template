@@ -1,7 +1,7 @@
 <template>
   <div class="panel">
     <div>
-      <h2>vue panel demo</h2>
+      <h2 class="title">vue panel demo</h2>
       <img
         :src="logo"
         className="logo"
@@ -54,6 +54,9 @@ h1 {
 }
 .panel {
   padding: 0 10px;
+  .title{
+    font-size: 20px;
+  }
 }
 .logo{
   display:block;
