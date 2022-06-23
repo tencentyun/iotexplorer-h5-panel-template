@@ -1,7 +1,7 @@
 <template>
   <div class="panel">
     <div>
-      <h2>vue panel demo</h2>
+      <h2 class="title">vue panel demo</h2>
       <img
         :src="logo"
         className="logo"
@@ -45,6 +45,8 @@
 
 <style lang="less">
 @green: green;
+// 如果需要将 vant等 UI库的 px 也转成 vw, 可以去掉注释，同时去掉 index.js 中引入的 css
+// @import 'vant/lib/index.css';
 h3 {
   color: red;
   font-size: 18px;
@@ -54,6 +56,9 @@ h1 {
 }
 .panel {
   padding: 0 10px;
+  .title{
+    font-size: 20px;
+  }
 }
 .logo{
   display:block;
