@@ -21,7 +21,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "qcloud-iotexplorer-bluetooth-adapter-llsync": "^1.7.5-beta",
     "qcloud-iotexplorer-h5-panel-sdk": "^1.2.8",
     "rimraf": "^3.0.2",
     "vant": "3",
