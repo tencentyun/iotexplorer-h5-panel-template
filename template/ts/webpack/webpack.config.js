@@ -38,9 +38,7 @@ module.exports = (env, argv) => {
       filename: '[name].js',
       libraryTarget: 'umd'
     },
-    externals: {
-      'qcloud-iotexplorer-h5-panel-sdk': 'h5PanelSdk',
-    },
+
     devServer: {
       contentBase: distPath,
       compress: true,

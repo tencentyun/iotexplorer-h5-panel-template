@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import sdk from 'qcloud-iotexplorer-h5-panel-sdk';
+const sdk = window.h5PanelSdk;
   export default {
     setup() {
       return {
