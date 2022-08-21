@@ -58,7 +58,7 @@ Q: 打开的页面报400
 Q、wistle 导入https证书通过中间人方式解决https 抓包问题。
 > A: [解决方法](https://jingyan.baidu.com/article/c843ea0bc4142a77921e4a79.html)
 
-Q、chorme 抓取https包提示不是私密链接的问题
+Q、chrome 抓取https包提示不是私密链接的问题
 > A: [解决方案](https://blog.51cto.com/u_15399817/4583253)
 
 ## Related
