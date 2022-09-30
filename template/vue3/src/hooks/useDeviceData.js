@@ -15,7 +15,18 @@ export function useDeviceData() {
     }
   });
 
-  sdk.getDeviceStatus().then(status => deviceStatusRef.value = status);
+  const getInitData = Promise.all([sdk.getDeviceStatus(), sdk.sdkReady()]);
+  const app = document.getElementById("app");
+  const loading = document.createElement("div");
+  loading.className="loading";
+  document.body.appendChild(loading);
+  app.setAttribute("style", "display:none");
+  getInitData.then(status => {
+    deviceStatusRef.value = status;
+    loading.remove()
+    app.setAttribute("style", "display:block");
+  });
+
   sdk.on('wsStatusChange', ({deviceStatus}) => {
     console.log({deviceStatus});
     deviceStatusRef.value = deviceStatus;
