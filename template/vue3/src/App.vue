@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <Loading v-if="!isShowLoading" />
+    <Loading v-if="!sdkReady" />
     <div v-else>
       <h2 class="title">vue panel demo</h2>
       <img
@@ -34,8 +34,7 @@
   import Loading from './hooks/Loading.vue';
   import { useDeviceData } from './hooks/useDeviceData';
 
-  const { deviceData } = useDeviceData();
-  const isShowLoading = ref(deviceData);
+  const { sdkReady } = useDeviceData();
   const route = useRoute();
   const router = useRouter();
   const active = ref('/');
