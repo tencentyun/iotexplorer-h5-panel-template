@@ -15,7 +15,8 @@ export function useDeviceData() {
     }
   });
 
-  sdk.getDeviceStatus().then(status => deviceStatusRef.value = status);
+  Promise.all([sdk.getDeviceStatus(), sdk.sdkReady()]).then(status => deviceStatusRef.value = status);
+
   sdk.on('wsStatusChange', ({deviceStatus}) => {
     console.log({deviceStatus});
     deviceStatusRef.value = deviceStatus;

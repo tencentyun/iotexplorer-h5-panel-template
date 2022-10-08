@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import { Button, Cell, Icon, Tab, Tabs } from 'vant';
-import sdk from 'qcloud-iotexplorer-h5-panel-sdk';
 import router from './router';
 import App from './App.vue';
 
