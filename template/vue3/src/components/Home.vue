@@ -105,7 +105,7 @@ export default {
       );
     },
     goDeviceDetail() {
-      sdk.goDeviceInfoPage(`${this.productId}/${this.deviceName}`);
+      sdk.goDeviceDetailPage(`${this.productId}/${this.deviceName}`);
     },
 
     async connectDevice() {
@@ -221,6 +221,7 @@ export default {
     disconnectDevice() {
       console.warn('disconnect Device');
       this.deviceAdapterRef.disconnectDevice();
+      this.updateDeviceConnectStatusInfo(StandardBleConnectStatus.DISCONNECTED);
     }
   },
 };
