@@ -31,7 +31,7 @@ module.exports = (env, argv) => {
     name: 'iot-explorer-h5-panel-sdk-demo',
     mode,
     entry: {
-      index: path.join(srcPath, '/app.jsx'),
+      index: path.join(srcPath, '/index.js'),
     },
     output: {
       path: distPath,
@@ -45,12 +45,14 @@ module.exports = (env, argv) => {
       contentBase: distPath,
       compress: true,
       port: 9000,
-      host: '0.0.0.0',
       disableHostCheck: true, //  新增该配置项
-      // hot: true,
+      hot: false,
+      liveReload: false,
+      headers: {
+        'access-control-allow-origin': '*'
+      },
       open: true,
       openPage: `https://iot.cloud.tencent.com/h5panel/developing?productId=${productId}&deviceName=${deviceName}`,
-      https: true,
     },
     module: {
       // 现在的 babel 配置已经很简单了，我们只需要加入默认的配置即可
@@ -104,7 +106,7 @@ module.exports = (env, argv) => {
       // 添加 jsx 后缀支持
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
-    devtool: isDevMode ? 'inline-source-map' : 'inline-nosources-source-map',
+    devtool: isDevMode ? 'inline-source-map' : false,
     optimization: enableCodeSplitting && !isDevMode ?
       {
         splitChunks: {
@@ -133,25 +135,6 @@ module.exports = (env, argv) => {
           autoprefixer: { disable: true },
         },
       }),
-      // new BundleAnalyzerPlugin(),
-      // new CopyPlugin([
-      //   {
-      //     from: path.join(srcPath, '/project.config.json'),
-      //     to: path.join(distPath, '/project.config.json'),
-      //   },
-      //   {
-      //     from: path.join(srcPath, '/plugin/plugin.json'),
-      //     to: path.join(distPath, '/plugin'),
-      //   },
-      //   {
-      //     from: path.join(srcPath, '/doc'),
-      //     to: path.join(distPath, '/doc'),
-      //   },
-      //   {
-      //     from: path.join(srcPath, '/miniprogram'),
-      //     to: path.join(distPath, '/miniprogram'),
-      //   },
-      // ]),
     ],
     stats: { children: false },
   };
