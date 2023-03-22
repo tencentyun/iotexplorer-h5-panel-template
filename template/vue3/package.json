@@ -40,7 +40,7 @@
     "eslint-plugin-vue": "^9.1.0",
     "open": "^8.4.0",
     "parcel": "^2.6.0",
-    "parcel-namer-rewrite": "^2.0.0-rc.2",
+    "parcel-namer-rewrite": "2.0.0-rc.3",
     "postcss-import": "^14.1.0",
     "postcss-px-to-viewport": "^1.1.1"
   },
@@ -49,7 +49,12 @@
       "(index).css": "index.{hash}.css",
       "(index).js": "index.{hash}.js"
     },
-    "developmentDisable": true
+    "disable": false,
+    "profiles": {
+      "development": {
+        "disable": true
+      }
+    }
   },
   "targets": {
     "default": {
