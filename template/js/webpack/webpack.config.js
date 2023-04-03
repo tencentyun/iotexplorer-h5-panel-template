@@ -1,8 +1,11 @@
+/* eslint-disable */
 const path = require('path');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // 当 JS 文件大小超过 2MB 限制时，可置为 true 开启 webpack 的代码拆分
 // 开启后 npm run release 将输出多个文件，需要全部上传到控制台交互开发的设置项中
@@ -35,23 +38,27 @@ module.exports = (env, argv) => {
     },
     output: {
       path: distPath,
-      filename: isDevMode ? '[name].js' : '[name].[contenthash:8].js',
+      filename: isDevMode ? '[name].js' : 'SmartLock.[contenthash:8].js',
       libraryTarget: 'umd'
     },
     externals: {
       'qcloud-iotexplorer-h5-panel-sdk': 'h5PanelSdk',
+      react: 'React',
+      'react-dom': 'ReactDOM',
     },
     devServer: {
       contentBase: distPath,
-      compress: true,
       port: 9000,
+      host: '127.0.0.1',
       disableHostCheck: true, //  新增该配置项
-      hot: false,
-      liveReload: false,
+      overlay: true,
+      hot: true,
       headers: {
         'access-control-allow-origin': '*'
       },
-      open: true,
+      open: {
+        newInstance: false
+      },
       openPage: `https://iot.cloud.tencent.com/h5panel/developing?productId=${productId}&deviceName=${deviceName}`,
     },
     module: {
@@ -66,6 +73,7 @@ module.exports = (env, argv) => {
               sourceType: 'unambiguous',
               presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
               plugins: [
+                isDevMode && require.resolve('react-refresh/babel'),
                 '@babel/plugin-proposal-class-properties',
                 [
                   '@babel/plugin-transform-runtime',
@@ -77,9 +85,22 @@ module.exports = (env, argv) => {
                     'useESModules': false,
                   }
                 ],
-              ]
+              ].filter(Boolean)
             },
           }
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            'url-loader',
+            'svg-transform-loader',
+            {
+              loader: 'svgo-loader',
+              options: {
+                plugins: [{ removeTitle: true }, { convertStyleToAttrs: true }],
+              },
+            },
+          ],
         },
         {
           test: /\.(le|c)ss$/,
@@ -92,7 +113,12 @@ module.exports = (env, argv) => {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                plugins: [require('autoprefixer')()],
+                plugins: [
+                  require('autoprefixer')(),
+                  require('postcss-px-to-viewport')({
+                    viewportWidth: 375,
+                  })
+                ],
               },
             },
             {
@@ -105,6 +131,10 @@ module.exports = (env, argv) => {
     resolve: {
       // 添加 jsx 后缀支持
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      alias: {
+        '@src': path.resolve(__dirname, '../src'),
+        '@components': path.resolve(__dirname, '../src/components'),
+      },
     },
     devtool: isDevMode ? 'inline-source-map' : false,
     optimization: enableCodeSplitting && !isDevMode ?
@@ -121,13 +151,14 @@ module.exports = (env, argv) => {
       } : {},
     plugins: [
       new webpack.ProgressPlugin(),
+      isDevMode && new ReactRefreshWebpackPlugin(),
       new CleanWebpackPlugin(),
       ...(isDevMode ? [new webpack.HotModuleReplacementPlugin()] : []),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       new ModifiedMiniCssExtractPlugin({
-        filename: isDevMode ? '[name].css' : '[name].[contenthash:8].css',
+        filename: isDevMode ? '[name].css' : 'SmartLock.[contenthash:8].css',
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
@@ -135,7 +166,8 @@ module.exports = (env, argv) => {
           autoprefixer: { disable: true },
         },
       }),
-    ],
+      // !isDevMode && new BundleAnalyzerPlugin()
+    ].filter(Boolean),
     stats: { children: false },
   };
 };
