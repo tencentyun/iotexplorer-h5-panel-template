@@ -1,6 +1,6 @@
 # iotexplorer-h5-panel-template
 
-腾讯连连(腾讯云物联网控制端)自定义H5面板开发面板demo vue版 ,项目通过 [CAZ template](https://github.com/zce/caz)创建
+腾讯连连(腾讯云物联网控制端)自定义H5面板开发面板demo vue 版，项目通过 [CAZ template](https://github.com/zce/caz)创建
 
 如需要 react 框架版本[请点击查看](https://github.com/tencentyun/iotexplorer-h5-panel-demo)
 
@@ -9,16 +9,40 @@
 
 如果您还不了解 h5 面板，可以查看[快速入门](https://cloud.tencent.com/document/product/1081/49027)及[开发指南](https://cloud.tencent.com/document/product/1081/49028)
 
-## 开发配置
+#### 开始初始化面板项目
+
+```bash
+# create h5-panel apps by this template
+$ npx caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
+
+# OR 如果全局安装了 caz
+$ caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
+
+$ cd my-h5-panel
+
+$ npm run dev -- --productId=your_product_id --deviceName=your_devicename # -deviceName为选填，然后会自动打开面板页面
+```
+
+## 代理配置
 
 准备环境: [Node.js](https://nodejs.org) (>= 12.10 required, >= 14.17 preferred), [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22) [whistle](https://github.com/avwo/whistle) and [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega).
 
-所需工具和实现原理：
-[SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega).
+#### 免代理模式
 
-如果您对 whistle 不熟悉，也可以使用**[免代理模式](https://cloud.tencent.com/document/product/1081/67441#proxy-free-mode)**，通过在面板开发链接后面拼接`&sw=true`即可
+如果您对 whistle 不熟悉，推荐使用 [**免代理模式**](https://cloud.tencent.com/document/product/1081/67441#proxy-free-mode)，通过在面板开发链接后面拼接`&sw=true`即可
+```diff
+- https://iot.cloud.tencent.com/h5panel/developing?productId=ABCDEFG&deviceName=dev1
++ https://iot.cloud.tencent.com/h5panel/developing?productId=ABCDEFG&deviceName=dev1&sw=true
+```
 
-通过添加 `proxy SwitchyOmega`, 将在浏览器中的访问的请求通过该插件代理到 `http://127.0.0.1:8899`(whistle所在的 node 服务) ，再通过 whistle 将请求代理到本地开发服务器(http://localhost:9000)。
+#### 代理模式
+
+所需工具：
+[SwitchyOmega浏览器插件](https://github.com/FelisCatus/SwitchyOmega).
+
+通过添加 `proxy SwitchyOmega`chrome插件, 将在浏览器中的访问的请求通过该插件代理到 `http://127.0.0.1:8899`(whistle所在的 node 服务) ，再通过 whistle 将请求代理到本地开发服务器(http://localhost:9000)。
+
+
 
 ![代理原理](./static/proxy.png)
 
@@ -33,20 +57,6 @@ developing.style/developing.css https://127.0.0.1:9000/index.css
 # https://iot.cloud.tencent.com:9000 https://127.0.0.1:9000 # 用于支持HMR 可以不用
 ```
 
-开始初始化面板项目
-
-```bash
-# create h5-panel apps by this template
-$ npx caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
-
-# 如果全局安装了 caz
-$ caz tencentyun/iotexplorer-h5-panel-template my-h5-panel
-
-$ cd my-h5-panel
-
-$ npm run dev -- --productId=your_product_id --deviceName=your_devicename # -deviceName为选填，然后会自动打开面板页面
-```
-
 ## 常见问题
 
 Q: 打开的页面白屏
@@ -55,10 +65,10 @@ Q: 打开的页面白屏
 Q: 打开的页面报400
 > A: 请在`npm run dev`时传入正确的 productId
 
-Q、wistle 导入https证书通过中间人方式解决https 抓包问题。
+Q、whistle 导入https证书通过中间人方式解决https 抓包问题。
 > A: [解决方法](https://jingyan.baidu.com/article/c843ea0bc4142a77921e4a79.html)
 
-Q、chorme 抓取https包提示不是私密链接的问题
+Q、chrome 抓取https包提示不是私密链接的问题
 > A: [解决方案](https://blog.51cto.com/u_15399817/4583253)
 
 ## Related

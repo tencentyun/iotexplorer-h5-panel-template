@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import { Button, Cell, Icon, Tab, Tabs } from 'vant';
-const sdk = window.h5PanelSdk;
 import router from './router';
 import App from './App.vue';
 

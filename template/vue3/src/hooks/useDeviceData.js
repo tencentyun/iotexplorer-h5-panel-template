@@ -6,6 +6,7 @@ export function useDeviceData() {
   const deviceData = reactive({...sdk.deviceData});
   // 设备在线状态 0：离线 1：在线
   const deviceStatusRef = ref(1);
+  const sdkReadyRef = ref(false);
   sdk.on('wsReport', function (res) {
     const {deviceData: incomeDeviceData, deviceId} = res;
     if (deviceId === sdk.deviceId) {
@@ -15,11 +16,12 @@ export function useDeviceData() {
     }
   });
 
-  sdk.getDeviceStatus().then(status => deviceStatusRef.value = status);
+  Promise.all([sdk.getDeviceStatus(), sdk.sdkReady()]).then(status => deviceStatusRef.value = status);
+  sdk.sdkReady().then(() => sdkReadyRef.value = true);
   sdk.on('wsStatusChange', ({deviceStatus}) => {
     console.log({deviceStatus});
     deviceStatusRef.value = deviceStatus;
   });
 
-  return { deviceData, deviceStatus: deviceStatusRef };
+  return { deviceData, deviceStatus: deviceStatusRef, sdkReady: sdkReadyRef };
 }

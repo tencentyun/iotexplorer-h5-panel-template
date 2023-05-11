@@ -1,6 +1,7 @@
 <template>
   <div class="panel">
-    <div>
+    <Loading v-if="!sdkReady" />
+    <div v-else>
       <h2 class="title">vue panel demo</h2>
       <img
         :src="logo"
@@ -30,7 +31,10 @@
   import logo from 'data-url:./assets/logo.svg';
   import { ref, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
+  import Loading from './hooks/Loading.vue';
+  import { useDeviceData } from './hooks/useDeviceData';
 
+  const { sdkReady } = useDeviceData();
   const route = useRoute();
   const router = useRouter();
   const active = ref('/');
@@ -41,6 +45,7 @@
   watch(active, (active) => {
     router.push(active);
   });
+
 </script>
 
 <style lang="less">

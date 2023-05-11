@@ -11,6 +11,7 @@ developing.script/developing.js https://127.0.0.1:9000/index.js
 developing.style/developing.css https://127.0.0.1:9000/index.css
 https://iot.cloud.tencent.com:9000 https://127.0.0.1:9000 # 用于支持HMR
 ```
+如果您不了解whistle，推荐使用[免代理模式](https://cloud.tencent.com/document/product/1081/67441#proxy-free-mode)进行开发
 
 开始初始化面板项目
 

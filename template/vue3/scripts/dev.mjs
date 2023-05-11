@@ -46,4 +46,4 @@ let subscription = await bundler.watch((err, event) => {
   }
 });
 
-open(`https://iot.cloud.tencent.com/h5panel/developing?productId=${productId || ''}${deviceName ? `&deviceName=${deviceName}` : ''}`);
+open(`https://iot.cloud.tencent.com/h5panel/developing?sw=true&productId=${productId || ''}${deviceName ? `&deviceName=${deviceName}` : ''}`);
