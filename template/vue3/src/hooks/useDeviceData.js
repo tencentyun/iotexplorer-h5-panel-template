@@ -1,5 +1,5 @@
 import { reactive, ref } from 'vue';
-import sdk from "qcloud-iotexplorer-h5-panel-sdk";
+const sdk = window.h5PanelSdk;
 
 export function useDeviceData() {
   // TIP: 直接传入 sdk.deviceData，响应式不生效

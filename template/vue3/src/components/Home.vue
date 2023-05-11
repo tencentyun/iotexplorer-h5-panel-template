@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import sdk from "qcloud-iotexplorer-h5-panel-sdk";
+const sdk = window.h5PanelSdk;
 import { useDeviceData } from "../hooks/useDeviceData";
 import { watchEffect } from "vue";
 
